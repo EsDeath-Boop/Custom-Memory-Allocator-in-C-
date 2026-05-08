@@ -1,7 +1,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
-
+#include <stdint.h>
 #define METADATA_SIZE sizeof(struct memory_block)
 #define ALIGN_4(x) ((((x - 1) >> 2) << 2) + 4)
 
@@ -190,7 +190,13 @@ void* custom_realloc(void* ptr, size_t size) {
 
 // Custom calloc implementation
 void* custom_calloc(size_t num, size_t size) {
+
+    if (num != 0 && size > SIZE_MAX / num) {
+        return NULL;
+    }
+
     size_t total_size = num * size;
+
     void* ptr = custom_malloc(total_size);
 
     if (ptr) {
