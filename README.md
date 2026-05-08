@@ -113,9 +113,3 @@ Summary:
 - Otherwise, `malloc` a new block, copy the data, and `free` the old block
 
 ---
-
-## References
-
-- [Malloc tutorial — Marwan Burelle](http://www.inf.udec.cl/~leo/Malloc_tutorial.pdf)
-- `man 2 sbrk` / `man 2 brk`
-- glibc ptmalloc source — `malloc/malloc.c`
